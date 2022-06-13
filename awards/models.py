@@ -7,4 +7,5 @@ class Profile(models.Model):
     bio=models.CharField(max_length=60)
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     phone=models.IntegerField()
+    name = models.CharField(blank=True, max_length=120)
     
