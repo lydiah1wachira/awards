@@ -13,6 +13,9 @@ class Profile(models.Model):
     
     def __str__(self):
         return f'{self.user.username} Profile'
+    
+    class Meta:
+        ordering = ['-profile_pic']
 
     @receiver(post_save, sender=User)
     def create_user_profile(sender, instance, created, **kwargs):
@@ -22,5 +25,28 @@ class Profile(models.Model):
     @receiver(post_save, sender=User)
     def save_user_profile(sender, instance, **kwargs):
         instance.profile.save()
+        
+        
+class Project(models.Model):
+    title=models.CharField(max_length=30)
+    image=models.ImageField(upload_to='project/')
+    content=models.IntegerField(default=0)
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    description=models.TextField(max_length=320)
+    link=models.URLField(max_length=60)
+    date=models.DateField(auto_now=True)
+   
+
+    class Meta:
+        ordering=['-title']
+
+    def __str__(self):
+        self.title
+        
+    @classmethod
+    def search_project(cls,title):
+        searched=cls.objects.filter(title__icontains=title)
+        return searched
+
    
     
