@@ -21,3 +21,8 @@ class PostForm(forms.ModelForm):
     class Meta:
         model=Project
         exclude=['user','content']
+        
+class UpdateProfileForm(forms.ModelForm):
+     class Meta:
+        model=Profile
+        exclude=['user']
