@@ -51,11 +51,11 @@ def post(request):
         form=PostForm()
     return render(request,'post.html',{'form':form})
   
-@login_required(login_url='/accounts/login/')
+@login_required(login_url='login')
 def profile(request):
     current_user=request.user
     try:
-        profis=Profile.objects.filter(user=current_user)[0:1]
+        prof=Profile.objects.filter(user=current_user)[0:1]
         user_projects=Project.objects.filter(user=current_user)
     except Exception as e:
         raise  Http404()
@@ -68,4 +68,4 @@ def profile(request):
         return redirect('profile')
     else:
         form=UpdateProfileForm()
-    return render(request,'profile.html', {'form':form,'profile':profis,'projects':user_projects})
+    return render(request,'profile.html', {'form':form,'profile':prof,'projects':user_projects})
