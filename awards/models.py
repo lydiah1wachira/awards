@@ -67,7 +67,7 @@ class Comments(models.Model):
         comments = cls.objects.filter(project_id = id)
         return comments
     
-class Rates(models.Model):
+class Rating(models.Model):
     design=models.PositiveIntegerField(default=0,validators=[MaxValueValidator(10)])
     usability=models.PositiveIntegerField(default=0,validators=[MaxValueValidator(10)])
     content=models.PositiveIntegerField(default=0,validators=[MaxValueValidator(10)])
