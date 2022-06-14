@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.dispatch import receiver
 from django.db.models.signals import post_save
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 # Create your models here.
 class Profile(models.Model):
@@ -65,3 +66,10 @@ class Comments(models.Model):
     def all_comments(cls, id):
         comments = cls.objects.filter(project_id = id)
         return comments
+    
+class Rates(models.Model):
+    design=models.PositiveIntegerField(default=0,validators=[MaxValueValidator(10)])
+    usability=models.PositiveIntegerField(default=0,validators=[MaxValueValidator(10)])
+    content=models.PositiveIntegerField(default=0,validators=[MaxValueValidator(10)])
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    project=models.IntegerField(default=0)
