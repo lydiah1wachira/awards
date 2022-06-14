@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'bootstrap5',
+    'tinymce',
     'awards.apps.AwardsConfig',
     'django.contrib.sites',
     'registration',
