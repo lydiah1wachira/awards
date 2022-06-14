@@ -26,3 +26,14 @@ class UpdateProfileForm(forms.ModelForm):
      class Meta:
         model=Profile
         exclude=['user']
+        
+        
+class RatingsForm(forms.ModelForm):
+    class Meta:
+        model=Rating
+        exclude=['user','project']
+        
+class ReviewsForm(forms.ModelForm):
+    class Meta:
+        model=Comments
+        exclude=['user','pro_id']

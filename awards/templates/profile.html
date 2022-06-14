@@ -1,9 +1,10 @@
 {%extends 'base.html'%}
 {%load bootstrap5%}
 {%block content%}
+
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-4 sidePro bg-dark" >
+    <div class="col-md-4 sidePro bg-light" >
       {%if profile%}
       {%for i in profile%}
       <div class="improfile">
@@ -40,7 +41,7 @@
 
 
       <button id='profile' data-toggle="modal" data-target="#modalSubscriptionForm" class="btn btn-default" type="button" name="button" >Update Profile</button>
-      <div style='color:black' class="modal fade" id="modalSubscriptionForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+      <div style='color:rgb(216, 174, 174)' class="modal fade" id="modalSubscriptionForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
       aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">

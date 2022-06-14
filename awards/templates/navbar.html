@@ -22,22 +22,19 @@
             
             <ul class="navbar-nav  ms-auto d-flex flex-row">
                 {% if user.is_authenticated %}
-                <li class="nav-item dropdown">
-                    <a id="dropdownMenuLink" data-toggle="dropdown"
-                       role="button" aria-haspopup="true" class="nav-link dropdown-toggle" aria-expanded="false">
-                        {{user.username | title }}
-                          <img src="{{user.profile.profile_picture.url}}" class="rounded-circle nav-img" alt="dp">
-                    </a>
-                    
-                        <a href="{% url 'logout' %}" class="dropdown-item text-center">Logout</a>
-                        
-                    </div>
-                </li>
+                <a style="color:black;padding:10px"  href="{%url 'profile'%}"><i class="far fa-user"></i>{{user}}</a>
                 {% else %}
                <li class="nav-item ml-5" id="site"><a href="{% url 'login' %}" class="btn btn-sm d-flex login">REGISTER/LOGIN</a></li> 
                {% endif %}
           </div>
-          <a href="{%url 'post'%}" id='submit' class="bg-default my-2 my-sm-0">Submit Project</a>
+
+          <a href="{% url 'logout' %}">
+            <button type="button" class="btn btn-dark">Logout</button>
+          </a>
+          <a href="{%url 'post'%}" id='submit'>
+            <button type="button" class="btn btn-dark">submit project</button>
+
+          </a>
           
                
       </nav>
