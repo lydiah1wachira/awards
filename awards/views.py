@@ -76,7 +76,7 @@ def detailed_project(request,project_id):
         all=Rating.objects.filter(project=project_id)
     except Exception as e:
         raise Http404()
-    #user single
+
     count=0
     for i in all:
         count+=i.usability

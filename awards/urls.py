@@ -10,6 +10,7 @@ urlpatterns = [
   path('signup/', views.signup, name='signup'),
   path('post/', views.post, name='post' ),
   path(r'user/profile/',views.profile,name='profile'),
+  re_path(r'^project/(\d+)/',views.detailed_project,name='details'),
 
   
 ]
