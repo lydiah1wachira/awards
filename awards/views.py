@@ -39,12 +39,12 @@ def logout_view(request):
   
 @login_required(login_url='login')
 def post(request):
-    current_user=request.user
+    current_user=request.user.profile
     if request.method=='POST':
         form =PostForm(request.POST,request.FILES)
         if form.is_valid():
             post=form.save(commit=False)
-            post.user=current_user
+            post.user=request.user.profile
             post.save()
         return redirect("index")
     else:
