@@ -70,7 +70,7 @@ def profile(request):
         form=UpdateProfileForm()
     return render(request,'profile.html', {'form':form,'profile':prof,'projects':user_projects})
 
-def project_detail(request,project_id):
+def detailed_project(request,project_id):
     try:
         projects=Project.objects.filter(id=project_id)
         all=Rating.objects.filter(project=project_id)
