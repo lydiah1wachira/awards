@@ -34,9 +34,8 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'bootstrap5',
     'tinymce',
+    'crispy_forms',
     'awards.apps.AwardsConfig',
-    'django.contrib.sites',
-    'registration',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

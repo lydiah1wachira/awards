@@ -1,4 +1,40 @@
 {% extends 'base.html' %}
 {% block content %} 
-
+<div class="container-fluid">
+    <div class="row">
+        <div class="hero text-center">
+            <h3>Django Awards </h3>
+            <h4>Where you can </h4>
+            
+            <button class="btn btn-outline-default" type="button" name="button">Design</button>
+            <button class="btn btn-outline-danger" type="button" name="button">Usability</button>
+            <button class="btn btn-outline-primary" type="button" name="button">Creativity</button>
+            <button class="btn btn-outline-secondary" type="button" name="button">Content</button>
+          
+        </div>  
+        <div class="row">
+            {% for project in projects %}
+            <div class="col-md-4">
+                <div class="card content">
+                  <div class="image">
+                      <a class="img" href="/project/{{project.id}}">  <img class="img-fluid" src="{{project.image.url}}" alt=""></a>
+                  </div>
+                  <div class="check">
+                    <i class="dta">{{project.date}}</i>
+                    <p>{{project.name}}</p>
+          
+                    <hr>
+                    <div class="">
+                      <i class="fas fa-pastafarianism"></i>
+                      <p>by {{project.user}}</p>
+                    </div>
+                  </div>
+          
+                </div>
+                <br>
+              </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
 {% endblock %}
