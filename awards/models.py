@@ -36,6 +36,11 @@ class Project(models.Model):
     description=models.TextField(max_length=320)
     link=models.URLField(max_length=60)
     date=models.DateField(auto_now=True)
+    content=models.IntegerField(default=0)
+    design=models.IntegerField(default=0)
+    usability=models.IntegerField(default=0)
+    
+    
    
 
     class Meta:

@@ -71,11 +71,9 @@ def profile(request):
     return render(request,'profile.html', {'form':form,'profile':prof,'projects':user_projects})
 
 def detailed_project(request,project_id):
-    try:
-        projects=Project.objects.filter(id=project_id)
-        all=Rating.objects.filter(project=project_id)
-    except Exception as e:
-        raise Http404()
+    
+    projects=Project.objects.filter(id=project_id)
+    all=Rating.objects.filter(project=project_id)
 
     count=0
     for i in all:
@@ -95,7 +93,7 @@ def detailed_project(request,project_id):
             rate=form.save(commit=False)
             rate.user=request.user
             rate.project=project_id
-            #review
+            
             rate.save()
             return redirect('details',project_id)
     else:
