@@ -71,9 +71,11 @@ def profile(request):
     return render(request,'profile.html', {'form':form,'profile':prof,'projects':user_projects})
 
 def detailed_project(request,project_id):
-    
-    projects=Project.objects.filter(id=project_id)
-    all=Rating.objects.filter(project=project_id)
+    try:
+        projects=Project.objects.filter(id=project_id)
+        all=Rating.objects.filter(project=project_id)
+    except Exception as e:
+        raise Http404()
 
     count=0
     for i in all:
@@ -149,3 +151,13 @@ def detailed_project(request,project_id):
     return render(request,'details.html',{'projects':projects,'form':form,'usability':average_usa,'design':average_des,'content':average_con,'average':averageRating,'auth':auth,'all':all,'ave':ave,'review':review,'comments':user_comment})
 
 
+def search(request):
+
+    if 'name' in request.GET and   request.GET['name']:
+        term=request.GET.get('name')
+        results=Project.search_project(term)
+
+        return render(request,'search.html',{'projects':results})
+    else:
+        message="You havent searched any project"
+        return render(request,'search.html',{'message':message})
