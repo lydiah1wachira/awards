@@ -1,43 +1,47 @@
-{% extends 'base.html' %}
-{% block content %} 
+{% extends 'base.html' %} {% block content %}
 <div class="container-fluid">
-    <div class="row">
-        <div class="hero text-center">
-            <h3>Django Awards </h3>
-            <h4>Where you can </h4>
-            
-            <button class="btn btn-outline-default" type="button" name="button">Design</button>
-            <button class="btn btn-outline-danger" type="button" name="button">Usability</button>
-            <button class="btn btn-outline-primary" type="button" name="button">Creativity</button>
-            <button class="btn btn-outline-secondary" type="button" name="button">Content</button>
-          
-        </div>  
-        <div class="row">
-            {% for project in projects %}
-            <div class="col-md-4">
-              
-                <div class="card content">
-                  <div class="image">
-                      <a class="img" href="{% url 'details' project.id %}">  <img class="img-fluid" src="{{project.image.url}}" alt=""></a>
-                  </div>
-                  <div class="check">
-                    <i class="dta">{{project.date}}</i>
-                    <p>{{project.title}}</p>
-          
-                    <hr>
-                    <div class="">
-                      <i class="fas fa-pastafarianism"></i>
-                      <p>by {{project.user}}</p>
-                    </div>
-                  </div>
-          
-                </div>
-            
-                
-                <br>
-              </div>
-            {% endfor %}
-        </div>
+  <div class="background">
+    <div class="blur">
+      <div id="intro-section">
+        <h2><strong>Django Gallery</strong></h2>
+        <h4>BY: Lydiah Wachira</h4>
+        <h4>
+          View and Review amazing projects by Amazing people all over and post
+          yours as well for feedback.
+        </h4>
+        <button class="btn btn-outline-default" type="button" name="button" style="border-radius:50%;">Design</button>
+        <button class="btn btn-outline-danger" type="button" name="button"style="border-radius:50%;">Usability</button>
+        <button class="btn btn-outline-primary" type="button" name="button"style="border-radius:50%;">Creativity</button>
+        <button class="btn btn-outline-secondary" type="button" name="button"style="border-radius:50%;">Content</button>
+        <button class="btn btn-outline-secondary" type="button" name="button"style="border-radius:50%;">Developer</button>
+      </div>
     </div>
+  </div>
+
+  <div class="row" id="allprojects">
+    <h2 style="text-align:center;text-decoration:underline;margin-bottom:1%;">Projects</h2>
+    {% for project in projects %}
+    <div class="col-md-4">
+      <div class="card content">
+        <div class="image">
+          <a class="img" href="{% url 'details' project.id %}">
+            <img class="img-fluid" src="{{project.image.url}}" alt=""
+          /></a>
+        </div>
+        <div class="check">
+          <i class="dta">{{project.date}}</i>
+          <p>{{project.title}}</p>
+
+          <hr />
+          <div class="">
+            <p>by {{project.user}}</p>
+          </div>
+        </div>
+      </div>
+
+      <br />
+    </div>
+    {% endfor %}
+  </div>
 </div>
 {% endblock %}

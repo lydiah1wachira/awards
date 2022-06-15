@@ -20,7 +20,7 @@
       <div class="col-md-4">
         <div class="card content">
           <div class="image">
-              <a class="img" href="/project/{{project.id}}">  <img class="img-fluid" src="{{project.image.url}}" alt=""></a>
+              <a class="img" href="{% url 'details' project.id %}">  <img class="img-fluid" src="{{project.image.url}}" alt=""></a>
           </div>
           <div class="check">
             <i class="dta">{{project.date}}</i>
@@ -28,7 +28,7 @@
   
             <hr>
             <div class="">
-              <i class="fas fa-pastafarianism"></i>
+             
               <p>by {{project.user}}</p>
             </div>
           </div>

@@ -2,12 +2,12 @@ from django.shortcuts import render,redirect,get_object_or_404
 from .models import Profile,Project,Comments,Rating
 from django.http import HttpResponse,Http404,HttpResponseRedirect,JsonResponse
 from .forms import SignUpForm,PostForm,UpdateProfileForm, RatingsForm,ReviewsForm
-from django.contrib.auth import login, authenticate,logout
+from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializer import ProjectSerializer,ProfileSerializer
-
+from django.contrib.auth import logout as django_logout
 # Create your views here.
 def index(request):
   '''View function to display the index page and its data'''
@@ -34,9 +34,11 @@ def signup(request):
     return render(request, 'registration/signup.html', {'form':form})
   
 
-def logout_view(request):
-    logout(request)
-    return redirect('index')
+@login_required
+def logout(request):
+    django_logout(request)
+    return  HttpResponseRedirect('/')
+
   
 @login_required(login_url='login')
 def post(request):
@@ -142,7 +144,7 @@ def detailed_project(request,project_id):
         if review.is_valid():
             comment=review.save(commit=False)
             comment.user=request.user
-            comment.pro_id=project_id
+            comment.pro_id = project_id
             comment.save()
             return redirect('details',project_id)
     else:
