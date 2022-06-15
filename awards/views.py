@@ -3,9 +3,10 @@ from .models import Profile,Project,Comments,Rating
 from django.http import HttpResponse,Http404,HttpResponseRedirect,JsonResponse
 from .forms import SignUpForm,PostForm,UpdateProfileForm, RatingsForm,ReviewsForm
 from django.contrib.auth import login, authenticate,logout
-from django.contrib import messages
-from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .serializer import ProjectSerializer,ProfileSerializer
 
 # Create your views here.
 def index(request):
@@ -161,3 +162,9 @@ def search(request):
     else:
         message="You havent searched any project"
         return render(request,'search.html',{'message':message})
+
+class ProjectList(APIView):
+    def get(self,request,format=None):
+        all_projects=Project.objects.all()
+        serializers=ProjectSerializer(all_projects,many=True)
+        return Response(serializers.data)
