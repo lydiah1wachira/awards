@@ -56,7 +56,7 @@ def post(request):
 def profile(request):
     current_user=request.user
     try:
-        prof=Profile.objects.filter(user=current_user)[0:1]
+        profis=Profile.objects.filter(user=current_user)[0:1]
         user_projects=Project.objects.filter(user=current_user)
     except Exception as e:
         raise  Http404()
@@ -69,7 +69,10 @@ def profile(request):
         return redirect('profile')
     else:
         form=UpdateProfileForm()
-    return render(request,'profile.html', {'form':form,'profile':prof,'projects':user_projects})
+    return render(request,'profile.html', {'form':form,'profile':profis,'projects':user_projects})
+
+
+
 
 def detailed_project(request,project_id):
     try:
