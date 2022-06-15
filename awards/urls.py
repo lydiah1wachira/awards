@@ -13,6 +13,7 @@ urlpatterns = [
   re_path('project/(\d+)/',views.detailed_project,name='details'),
   path('search/projects/results/',views.search,name="search"),
   path('api/projects/',views.ProjectList.as_view()),
+  path('accounts/', include('django.contrib.auth.urls')),
 
   
 ]

@@ -23,10 +23,6 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('awards/',include('awards.urls')),
-    path('accounts/', include('django.contrib.auth.urls')),
-  
-     
- 
     path('tinymce/', include('tinymce.urls')),
 ]
 
