@@ -9,7 +9,7 @@ urlpatterns = [
   path('', views.index, name="index"),
   path('signup/', views.signup, name='signup'),
   path('post/', views.post, name='post' ),
-  path(r'user/profile/',views.profile,name='profile'),
+  path('profile/',views.profile,name='profile'),
   re_path('project/(\d+)/',views.detailed_project,name='details'),
   path('search/projects/results/',views.search,name="search"),
   path('api/projects/',views.ProjectList.as_view()),
