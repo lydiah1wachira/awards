@@ -65,3 +65,8 @@
 #allprojects{
   padding-top: 2%;
 }
+
+.searchForm{
+  justify-content: center;
+  margin-left: 300px;
+}

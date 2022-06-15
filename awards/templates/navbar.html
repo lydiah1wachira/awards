@@ -19,10 +19,6 @@
             <li class="nav-item active">
               <a class="nav-link" href="{% url 'index' %}">Home </a>
             </li>
-            <form id='search' role="search" action="{%url 'search'%}" class="form-inline my-2 my-lg-0 animated fadeIn" >
-              <input required name='name' class="form-control mr-sm-2" type="search" placeholder="Search by name" aria-label="Search">
-              <button class="btn btn-outline-default" type="submit"></i></i></button>
-            </form>
             
             <ul class="navbar-nav  ms-auto d-flex flex-row">
                 {% if user.is_authenticated %}
@@ -31,14 +27,24 @@
                <li class="nav-item ml-5" id="site"><a href="{% url 'login' %}" class="btn btn-sm d-flex login">REGISTER/LOGIN</a></li> 
                {% endif %}
           </div>
-
-          <a href="{% url 'logout' %}">
-            <button type="button" class="btn btn-dark">Logout</button>
-          </a>
-          <a href="{%url 'post'%}" id='submit'>
-            <button type="button" class="btn btn-dark">submit project</button>
-
-          </a>
+          <div class="searchForm">
+            <form id='search' role="search" action="{%url 'search'%}" class="form-inline my-2 my-lg-0 animated fadeIn" style="margin-right:700px;padding-top:7px;" >
+              <input required name='name' class="form-control mr-sm-2" type="search" placeholder="Search by name" aria-label="Search">
+              <button class="btn btn-outline-default" type="submit"></i></i></button>
+            </form>
+          </div>
+         
+          
+          <div>
+            <a href="{% url 'logout' %}">
+              <button type="button" class="btn btn-dark">Logout</button>
+            </a>
+            <a href="{%url 'post'%}" id='submit'>
+              <button type="button" class="btn btn-dark">submit project</button>
+  
+            </a>
+            
+          </div>
           
                
       </nav>
